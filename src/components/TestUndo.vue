@@ -82,7 +82,6 @@ export default class TestUndo extends Vue {
       return
     }
     const action = manager.undoActions.pop()
-    console.log('ac', action)
     const execFn = manager.getFunction(action.name)
     manager.data = execFn(manager.data, action.params)
     console.log('manager', manager)
