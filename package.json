@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "babel-eslint": "^10.1.0",
     "core-js": "^3.6.5",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
@@ -48,9 +49,6 @@
       "@vue/prettier",
       "@vue/prettier/@typescript-eslint"
     ],
-    "parserOptions": {
-      "ecmaVersion": 2020
-    },
     "rules": {}
   },
   "browserslist": [

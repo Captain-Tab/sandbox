@@ -11,8 +11,21 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { ActionInfo, DataInfo, ParamsInfo } from './test'
 import manager from '@/utils/testUndo'
+
+interface ParamsInfo {
+  property: string
+  value: number
+}
+
+export interface ActionInfo {
+  name: string
+  params: ParamsInfo
+}
+
+export interface DataInfo {
+  [key: string]: number
+}
 
 @Component
 export default class TestUndo extends Vue {
