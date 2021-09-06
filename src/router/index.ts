@@ -13,8 +13,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/space',
     name: 'space',
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/Space.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '../views/Space.vue'),
   },
 ]
 

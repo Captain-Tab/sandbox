@@ -37,9 +37,7 @@ export default {
   data: { left: 0 },
   actions,
   undoActions,
-  getFunction(
-    name: 'changePostion' | 'changePostionUndo'
-  ): (data: any, params: any) => any {
+  getFunction(name: 'changePostion' | 'changePostionUndo'): (data: any, params: any) => any {
     return functions[name]
   },
 }

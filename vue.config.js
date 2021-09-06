@@ -7,10 +7,12 @@ function resolve(dir) {
 module.exports = {
   publicPath: './',
   productionSourceMap: false,
+
   configureWebpack: (config) => {
     const plugins = []
     config.plugins = [...config.plugins, ...plugins]
   },
+
   chainWebpack: (config) => {
     config.resolve.alias.set('@$', resolve('src'))
     // 增加ts-loader对ts文件的解析
@@ -29,8 +31,16 @@ module.exports = {
       })
       .end()
   },
+
   devServer: {
     port: '3000',
     disableHostCheck: true,
+  },
+
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'less',
+      patterns: [path.resolve(__dirname, './src/assets/css/global.less')],
+    },
   },
 }

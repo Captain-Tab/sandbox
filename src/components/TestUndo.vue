@@ -60,9 +60,7 @@ export default class TestUndo extends Vue {
     // push actions to record array
     manager.actions.push(this.action)
     // find the funciton
-    const execFn = manager.getFunction(
-      this.action.name as 'changePostion' | 'changePostionUndo'
-    )
+    const execFn = manager.getFunction(this.action.name as 'changePostion' | 'changePostionUndo')
 
     // execute the function
     manager.data = execFn(manager.data, this.action.params)
@@ -79,9 +77,7 @@ export default class TestUndo extends Vue {
   // trigger back action
   private undo() {
     const action: ActionInfo = manager.actions.pop()
-    const undoFn = manager.getFunction(
-      `${action.name}Undo` as 'changePostion' | 'changePostionUndo'
-    )
+    const undoFn = manager.getFunction(`${action.name}Undo` as 'changePostion' | 'changePostionUndo')
     manager.data = undoFn(manager.data, action.params)
     console.log('manager', manager)
     this.data = manager.data
