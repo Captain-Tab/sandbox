@@ -5,8 +5,7 @@
         v-for="(item, index) in componentOptions"
         :key="index"
         :class="['space-option-item', currentComponent === item ? 'selected' : '']"
-        @click="setDisplay(item)"
-      >
+        @click="setDisplay(item)">
         {{ item }}
       </p>
     </div>
@@ -18,6 +17,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import TestUndo from '@/components/TestUndo.vue'
 import TestIterator from '@/components/TestIterator.vue'
+import TestWaterfall from '@/components/TestWaterfall.vue'
 
 type ComponentType = 'undo' | 'iterator'
 
@@ -25,12 +25,13 @@ type ComponentType = 'undo' | 'iterator'
   components: {
     TestUndo,
     TestIterator,
+    TestWaterfall,
   },
 })
 export default class Space extends Vue {
   name = 'Space'
 
-  private componentOptions = ['undo', 'iterator'] // component lists
+  private componentOptions = ['undo', 'iterator', 'waterfall'] // component lists
   private currentComponent: ComponentType = 'undo' // current component
 
   // decide which component will display
@@ -42,6 +43,7 @@ export default class Space extends Vue {
   private componentMap: Record<string, string> = {
     undo: 'TestUndo',
     iterator: 'TestIterator',
+    waterfall: 'TestWaterfall',
   }
 }
 </script>
