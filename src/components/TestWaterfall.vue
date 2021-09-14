@@ -24,10 +24,8 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-// @ts-ignore
-import Waterfall from 'vue-waterfall/lib/waterfall.vue'
-// @ts-ignore
-import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot.vue'
+import Waterfall from '@/components/testWaterfall/Index.vue'
+import WaterfallSlot from '@/components/testWaterfall/WaterfallSlot.vue'
 
 @Component({
   components: {
