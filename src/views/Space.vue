@@ -18,6 +18,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import TestUndo from '@/components/TestUndo.vue'
 import TestIterator from '@/components/TestIterator.vue'
 import TestWaterfall from '@/components/TestWaterfall.vue'
+import TestPosition from '@/components/TestUndo.vue'
 
 type ComponentType = 'undo' | 'iterator'
 
@@ -26,12 +27,13 @@ type ComponentType = 'undo' | 'iterator'
     TestUndo,
     TestIterator,
     TestWaterfall,
+    TestPosition
   },
 })
 export default class Space extends Vue {
   name = 'Space'
 
-  private componentOptions = ['undo', 'iterator', 'waterfall'] // component lists
+  private componentOptions = ['undo', 'iterator', 'waterfall', 'position'] // component lists
   private currentComponent: ComponentType = 'undo' // current component
 
   // decide which component will display
@@ -44,6 +46,7 @@ export default class Space extends Vue {
     undo: 'TestUndo',
     iterator: 'TestIterator',
     waterfall: 'TestWaterfall',
+    position: 'TestPosition'
   }
 }
 </script>
