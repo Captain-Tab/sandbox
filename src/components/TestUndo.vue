@@ -17,12 +17,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { ActionInfo, DataInfo, ParamsInfo } from './test'
 import manager from '@/utils/testUndo'
 @Component
 export default class TestUndo extends Vue {
   name = 'TestUndo'
-  private data: DataInfo = { left: 0 } // test data
+  private data = { left: 0 } // test data
   private box: HTMLElement | undefined = undefined
   private getBox(): HTMLElement {
     const box = document.getElementById('box') as HTMLElement
@@ -35,7 +34,7 @@ export default class TestUndo extends Vue {
     this.box.style.left = data.left.toString() + 'px'
   }
   // action
-  private action: ActionInfo = {
+  private action = {
     name: 'changePostion',
     params: {
       property: 'left',
@@ -62,7 +61,7 @@ export default class TestUndo extends Vue {
   }
   // trigger back action
   private undo() {
-    const action: ActionInfo = manager.actions.pop()
+    const action= manager.actions.pop()
     const undoFn = manager.getFunction(
         `${action.name}Undo` as 'changePostion' | 'changePostionUndo'
     )
