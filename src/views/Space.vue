@@ -20,6 +20,7 @@ import TestIterator from '@/components/TestIterator.vue'
 import TestWaterfall from '@/components/TestWaterfall.vue'
 import TestPosition from '@/components/TestUndo.vue'
 import TestLineBreak from '@/components/TestLineBreak.vue'
+import TestOnceReload from '@/components/TestOnceReload.vue'
 
 type ComponentType = 'undo' | 'iterator'
 
@@ -29,14 +30,15 @@ type ComponentType = 'undo' | 'iterator'
     TestIterator,
     TestWaterfall,
     TestPosition,
-    TestLineBreak
+    TestLineBreak,
+    TestOnceReload
   },
 })
 export default class Space extends Vue {
   name = 'Space'
 
-  private componentOptions = ['undo', 'iterator', 'waterfall', 'position', 'line'] // component lists
-  private currentComponent: ComponentType = 'undo' // current component
+  private componentOptions = ['undo', 'iterator', 'waterfall', 'position', 'line', 'reload'] // component lists
+  private currentComponent: any = 'reload' // current component
 
   // decide which component will display
   private setDisplay(item: ComponentType) {
@@ -49,7 +51,8 @@ export default class Space extends Vue {
     iterator: 'TestIterator',
     waterfall: 'TestWaterfall',
     position: 'TestPosition',
-    line: 'TestLineBreak'
+    line: 'TestLineBreak',
+    reload: 'TestOnceReload'
   }
 }
 </script>

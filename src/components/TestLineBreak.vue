@@ -64,6 +64,7 @@ export default class TestLineBreak extends Vue {
       y = hTracker.getBoundingClientRect().height;
       if (y > oldY || n === len - 1) {
         // Line changed, resume the previous range (not when at the end of the text)
+        // @ts-ignore
         range.setEnd(node, n - (n !== len - 1));
         // Store the text of the line
         texts.push(range.toString());

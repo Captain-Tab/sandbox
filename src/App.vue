@@ -1,12 +1,37 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/space">space</router-link>
+      <router-link to="/">
+        Home
+      </router-link> |
+      <router-link to="/space">
+        space
+      </router-link>
     </div>
     <router-view />
   </div>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import cacheCenter from '@/utils/cacheCenter'
+
+@Component({
+  components: {
+  },
+})
+export default class App extends Vue {
+ private created() {
+   // method 1
+  // const reload = cacheCenter.read('reload') === 'true'
+  //  !reload && cacheCenter.add('reloadAction', 'true')
+
+   // method 2
+   const reload = cacheCenter.read('reload') === 'true'
+   reload ? cacheCenter.remove('reload') : cacheCenter.add('reload', 'true')
+ }
+}
+</script>
 
 <style>
 @import './assets/css/reset.css';
