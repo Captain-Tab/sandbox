@@ -13,6 +13,38 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class TestLineBreak extends Vue {
   name = 'TestLineBreak'
 
+  // https://stackoverflow.com/questions/62749538/find-how-the-lines-are-split-in-a-word-wrapped-element
+  private test () {
+    let divs = document.querySelectorAll('p');
+
+    for (let div of divs) {
+      let wordBreak = [];
+      const words = div.innerText.split(" ");
+      console.log('word', words)
+      div.innerText = words[0];
+      let beforeBreak = words[0];
+      let height = div.offsetHeight;
+
+      for (let i = 1; i < words.length; i++) {
+        div.innerText += ' ' + words[i];
+        if (div.offsetHeight > height) {
+          height = div.offsetHeight;
+          wordBreak.push(beforeBreak);
+          beforeBreak = words[i];
+        } else {
+          beforeBreak += ' ' + words[i];
+        }
+      }
+
+      wordBreak.push(beforeBreak);
+      console.log(wordBreak);
+    }
+  }
+
+  mounted () {
+    this.test()
+  }
+
   private showLines(e: any) {
     const el = e.target,
         node = el.firstChild,
@@ -20,10 +52,10 @@ export default class TestLineBreak extends Vue {
         len = e.target.textContent.length,
         texts = [];
     let hTracker, y, oldY;
+    console.log('node', node, e.target)
     range.selectNodeContents(el);
     range.collapse();
     hTracker = range.cloneRange();
-    console.log('htravker', hTracker, range)
     hTracker.setEnd(node, 1);
     oldY = hTracker.getBoundingClientRect().height;
     for (let n = 0; n < len; n++) {
@@ -32,7 +64,6 @@ export default class TestLineBreak extends Vue {
       y = hTracker.getBoundingClientRect().height;
       if (y > oldY || n === len - 1) {
         // Line changed, resume the previous range (not when at the end of the text)
-        // @ts-ignore
         range.setEnd(node, n - (n !== len - 1));
         // Store the text of the line
         texts.push(range.toString());
